@@ -45,11 +45,12 @@ const removeArticle = (req, res, next) => {
   article
     .findById(req.params.articleId)
     .then((item) => {
+      console.log(item);
       if (!item) {
         next(new NotFoundError("Item not found"));
         return;
       }
-      if (String(item.owner) !== req.user._id) {
+      if (!item.owner.equals(req.user._id)) {
         next(new ForbiddenError("You are not authorized to delete this item"));
         return;
       }
