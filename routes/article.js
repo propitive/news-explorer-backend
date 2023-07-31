@@ -23,6 +23,6 @@ router.post("/", auth, validateArticleInfoBody, addArticle);
 router.delete("/:articleId", auth, validateArticleId, removeArticle);
 
 // READ
-router.get("/", getArticles);
+router.get("/", auth, getArticles);
 
 module.exports = router;
