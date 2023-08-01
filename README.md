@@ -1,5 +1,5 @@
 # news-explorer-backend
 
 ### Domain
-Front end: https://sweaterweather.umhl.com/
-Back end: https://api.sweaterweather.umhl.com/
+Front end: https://news-explorer.okzk.com
+Back end: https://api.news-explorer.okzk.com
