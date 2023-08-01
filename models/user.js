@@ -22,27 +22,27 @@ const User = new mongoose.Schema({
     type: String,
     minlength: 2,
     maxlength: 30,
-    role: { type: String, default: "Elise Bouer" },
+    required: true,
   },
 });
 
 User.statics.findUserByCredentials = function findUserByCredentials(
   email,
-  password
+  password,
 ) {
   return this.findOne({ email })
     .select("+password")
     .then((endUser) => {
       if (!endUser) {
         return Promise.reject(
-          new UnauthorizedError("Incorrect email or password")
+          new UnauthorizedError("Incorrect email or password"),
         );
       }
 
       return bcrypt.compare(password, endUser.password).then((matched) => {
         if (!matched) {
           return Promise.reject(
-            new UnauthorizedError("Incorrect email or password")
+            new UnauthorizedError("Incorrect email or password"),
           );
         }
 
