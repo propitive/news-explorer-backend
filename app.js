@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 const mongoose = require("mongoose");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/error-handler");
@@ -17,6 +18,7 @@ const routes = require("./routes");
 app.use(express.json());
 app.use(cors());
 
+app.use(helmet());
 app.use(requestLogger);
 
 app.get("/crash-test", () => {
