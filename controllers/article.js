@@ -50,9 +50,14 @@ const removeArticle = (req, res, next) => {
         next(new ForbiddenError("You are not authorized to delete this item"));
         return;
       }
-      item.deleteOne().then(() => {
-        res.send({ message: "Item deleted" });
-      });
+      item
+        .deleteOne()
+        .then(() => {
+          res.send({ message: "Item deleted" });
+        })
+        .catch((err) => {
+          next(err);
+        });
     })
     .catch((err) => {
       if (err.name === "CastError") {
