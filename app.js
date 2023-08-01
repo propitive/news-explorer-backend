@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
+const { limiter } = require("./utils/rateLimiter");
 
 const { PORT = 3001 } = process.env;
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors());
 
 app.use(helmet());
 app.use(requestLogger);
+app.use(limiter);
 
 app.get("/crash-test", () => {
   setTimeout(() => {
