@@ -25,8 +25,6 @@ module.exports = (req, res, next) => {
     req.user = payload;
     next();
   } catch (err) {
-    console.log(req.user);
-    console.error(err);
     handleError(err, res);
   }
 };

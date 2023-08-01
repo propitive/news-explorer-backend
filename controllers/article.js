@@ -8,7 +8,6 @@ const getArticles = (req, res, next) => {
     .find({ owner: req.user._id })
     .then((items) => res.status(200).send({ data: items }))
     .catch((err) => {
-      console.error(err);
       next(err);
     });
 };
@@ -29,10 +28,8 @@ const addArticle = (req, res, next) => {
     })
     .then((item) => {
       res.send({ data: item });
-      console.log(req.user + "controller > article.js");
     })
     .catch((err) => {
-      console.error(err);
       if (err.name === "ValidationError") {
         next(new BadRequestError("Bad request, invalid data"));
       } else {
@@ -45,7 +42,6 @@ const removeArticle = (req, res, next) => {
   article
     .findById(req.params.articleId)
     .then((item) => {
-      console.log(item);
       if (!item) {
         next(new NotFoundError("Item not found"));
         return;
