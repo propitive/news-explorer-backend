@@ -1,7 +1,7 @@
 # News Explorer Backend
 
 This is a node.js news application powered by Express that provides the function to find and save the latest articles on any topic!
-![ScreenshotOfSearchResultsHome](/src/images/neHomePage.png)
+![ScreenshotOfSearchResultsHome](/utils/images/neHomePage.png)
 
 ### Domain
 
